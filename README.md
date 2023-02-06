@@ -117,6 +117,13 @@ By default the above command will store Julia package files in the `~/.julia` di
 singularity exec --bind data/:/data/ --env JULIA_DEPOT_PATH=/data/.julia containers/intervene-synthetic-data_latest.sif init
 ```
 
+Alternatively, if you experience an error `ERROR: LoadError: ArgumentError: "/local/tmp" is not a directory  `, you may give an explicit [tempdir](https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.tempdir) by adding `--env TMPDIR=~/tmp` to the previous command **and all subsequent commands**.
+
+```
+singularity exec --bind data/:/data/ --env TMPDIR=~/tmp containers/intervene-synthetic-data_latest.sif init
+```
+
+
 4. **The first time using the container, you need to fetch the reference dataset using the `fetch` command:**
 
 ```
